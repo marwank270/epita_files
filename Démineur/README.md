@@ -55,4 +55,10 @@ l’entourage proche (c'est-à-dire les huit cases autours).
 
 |Fonction:| Nom: |Paramètres & types: | Objectif: | Sortie & type: |Cas spécifique géré: |
 |:---:|:---:|:---:|:---:|:---:|:---:|
-|Saisie utilisateur d'entier|  `int_input`   |   `val_min: int, val_max: int, display: str`  |   Renvoyer une saisie utilisateur seulement si elle est bien uniquement un chiffre  |  `user_input: int`   | Cas ou l'utilisateur entre des caractères grâce à un `try:` & `except`    |
+|Saisie utilisateur d'entier|  `int_input`   |   `val_min: int, val_max: int, display: str`  |   Renvoyer une saisie utilisateur seulement si elle est bien uniquement un chiffre  |  `user_input: int`   | Cas ou l'utilisateur entre des caractères grâce à un `try:` & `except:`    |
+| Saisie utilisateur caractères | `char_input` | `i_min: int, i_max: int, display: str` | Renvoyer une saisie utilisateur seulement si c'est un caractère alphabétique compris entre les indexes des lettres passé en paramètres | `list` : `[user_input: str, uii: int]` | Cas ou l'utilisateur saisis plus d'un caractère|
+| Saisie des coordonnées du placement | `game_input` | `null` | Utiliser les deux fonctions précédentes pour renvoyer des coordonnées de la matrice | `list` : `[line: int, column: int]` | Gestion des cas spécifiques dans les fonctions `int_input()` et `char_input()` |
+| Affichage de la matrice | `disp_matrix` | `matrix: numpy.ndarray` | Afficher dans le terminal le plateau de la partie actuelle | `null` | Gestion de l'affichage des nombre des lignes et des lettres des colones | 
+| Affichage et sélection des options | `menu` | `null` | Afficher le menu principal, les règles et les options pour l'utilisateur | `null` | Aucun cas spécifique à gérer |
+| Jeu | `play` | `null` | Jouer (actuellement en solo seulement) | `null` | Actuellement aucun |
+ 
