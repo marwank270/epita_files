@@ -39,6 +39,8 @@ et comment celles-ci s'intègrent dans l’architecture globale de votre projet.
 - [x] A la fin d’une partie, il est possible de rejouer sans avoir à relancer le programme.
 - [x] Il est possible de quitter le programme grâce à une commande.
 
+--- 
+
 ## Logs du projet :
 ### 16/10/22 :
 - Début du projet
@@ -56,6 +58,8 @@ et comment celles-ci s'intègrent dans l’architecture globale de votre projet.
 - Amélioration des fonctions précédentes
 ### 23/10/22 :
 - Création de fonction `display()` pour l'utilisateur
+
+---
 
 ## Les fonctions de mon projet :
 
