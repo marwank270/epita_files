@@ -73,7 +73,10 @@ def int_input(val_min: int, val_max: int, display: str):
         
         # Try catch to avoid crash while converting input
         try:    
-            user_input = int(input(display))
+            user_input = input(display)
+            if user_input == 'quit':
+                return -1
+            user_input = int(user_input)
         except:
             isnum = False
             print(f"{cc.warn}Votre saisie n'est pas un nombre entier. Vous devez saisir un chiffre.")  
@@ -119,8 +122,18 @@ def game_input():
     column = -1
     target_position = []
     
-    line = int_input(1, 16, f"\n{cc.base}{cc.und}Selectionnez une ligne {cc.green}[1, 16]{cc.end}{cc.und} :{cc.end} ") - 1
-    target_position.append(line)
+    line = int_input(1, 16, f"\n{cc.base}{cc.und}Selectionnez une ligne {cc.green}[1, 16]{cc.end}{cc.und} (ou tapez \'quit\' pour retourner au menu) :{cc.end} ") - 1
+    # If command quit is used
+    if line <= -1:
+        print(f"\n{cc.base}0 : Annuler et continuer la partie\n{cc.base}1 : Quitter la partie et revenir au menu principal\n")
+        quit = int_input(0, 1, f"{cc.ask}Voulez vous quitter la partie ?")
+        if quit == 1:
+            menu()
+        else:
+            line = int_input(1, 16, f"\n{cc.base}{cc.und}Selectionnez une ligne {cc.green}[1, 16]{cc.end}{cc.und} :{cc.end} ") - 1
+            target_position.append(line)
+    else:
+        target_position.append(line)
     
     column = char_input(0, 15, f"\n{cc.base}{cc.und}Selectionnez une colone {cc.green}[A, P]{cc.end}{cc.und} :{cc.end} ")
     target_position.append(column[1])
@@ -179,21 +192,25 @@ def check_around(line: int, column: int, matrix):
     if matrix[line, column] == 1:
         # -1 means game over
         return -1
+    # Search for bomb around the coordinates
     else:
-        line_cp = line
-        column_cp = column
+        line_cp = line - 1
+        column_cp = column - 1
         
-        if line >= 2:
-            line_cp -= 1
-            column_cp -= 1
-            for i in range(3):
-                column_cp = column - 1
-                for j in range(3):
+        # Research loop
+        for i in range(3):
+            column_cp = column - 1
+            for j in range(3):
+                try:
                     # Find bomb around
                     if matrix[line_cp, column_cp] == 1:
                         bomb_count += 1
                     column_cp += 1
-                line_cp += 1
+                # If coordinates are near edges
+                except:
+                    pass
+        line_cp += 1
+        
     return bomb_count
             
 
