@@ -58,6 +58,7 @@ et comment celles-ci s'intègrent dans l’architecture globale de votre projet.
 - Amélioration des fonctions précédentes
 ### 23/10/22 :
 - Création de fonction `display()` pour l'utilisateur
+- Ajout de la révélation des bombes en fin de partie
 
 ---
 
