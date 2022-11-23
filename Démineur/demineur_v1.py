@@ -2,9 +2,6 @@
 
 ### Dependencies:
 import os
-import sys
-import math
-import time
 import numpy as np
 import random as rnd
 
@@ -150,6 +147,8 @@ def disp_matrix(matrix):
                 print(f" %s" % matrix[i,j], end= " |")    # f"{matrix[i,j]}"" don't work ?
                 # Cheat mode
                 # print(f" %s" % g.gm[i, j], end= " |")
+                
+
 
 # Check the bomb count around            
 def check_around(line: int, column: int, matrix):
@@ -197,8 +196,7 @@ def menu():
         play()
     elif choice == 0:
         print(f"{cc.heart}Au revoir.")
-        sys.exit()
-
+        exit()
 def play():   
     # Matrix initialisation & bomb randomization
     matrix = np.zeros((16,16), dtype=np.int32)
