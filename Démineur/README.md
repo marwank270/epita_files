@@ -49,7 +49,14 @@ l’entourage proche (c'est-à-dire les huit cases autours).
 - Début du projet
 - Création du fichier principal v1 et de ce fichier README.md
 - Lien du dossier de projet avec [mon repository Github](https://github.com/marwank270/epita_files/tree/master/D%C3%A9mineur)
-- Création de la fonction `int_input(val_min: int, val_max: int, display: str)`
+- Création de la fonction `int_input()`
+### 17/10/22 :
+- Finalisation des premières fonctions (`int_input()`, `disp_matrix()`)
+### 18/10/22 :
+- Création des fonctions `menu()`, `play()`, `menu()` et `char_input()`
+- Amélioration des fonctions précédentes
+### 20/10/22 : 
+- Création de la classe `Game` afin d'avoir accès aux matrices dans tout le code
 
 ## Les fonctions de mon projet :
 
@@ -58,7 +65,8 @@ l’entourage proche (c'est-à-dire les huit cases autours).
 |Saisie utilisateur d'entier|  `int_input`   |   `val_min: int, val_max: int, display: str`  |   Renvoyer une saisie utilisateur seulement si elle est bien uniquement un chiffre  |  `user_input: int`   | Cas ou l'utilisateur entre des caractères grâce à un `try:` & `except:`    |
 | Saisie utilisateur caractères | `char_input` | `i_min: int, i_max: int, display: str` | Renvoyer une saisie utilisateur seulement si c'est un caractère alphabétique compris entre les indexes des lettres passé en paramètres | `list` : `[user_input: str, uii: int]` | Cas ou l'utilisateur saisis plus d'un caractère|
 | Saisie des coordonnées du placement | `game_input` | `null` | Utiliser les deux fonctions précédentes pour renvoyer des coordonnées de la matrice | `list` : `[line: int, column: int]` | Gestion des cas spécifiques dans les fonctions `int_input()` et `char_input()` |
-| Affichage de la matrice | `disp_matrix` | `matrix: numpy.ndarray` | Afficher dans le terminal le plateau de la partie actuelle | `null` | Gestion de l'affichage des nombre des lignes et des lettres des colones | 
+| Affichage de la matrice | `disp_matrix` | `matrix: numpy.ndarray` | Afficher dans le terminal le plateau de la partie actuelle (actuellement version debug) | `null` | Gestion de l'affichage des nombre des lignes et des lettres des colones | 
 | Affichage et sélection des options | `menu` | `null` | Afficher le menu principal, les règles et les options pour l'utilisateur | `null` | Aucun cas spécifique à gérer |
 | Jeu | `play` | `null` | Jouer (actuellement en solo seulement) | `null` | Actuellement aucun |
+| Vérification des bombes alentours | `check_around` | `line: int, column: int, matrix: numpy.ndarray` | Vérifie le nombre de bombes dans les 8 cases adjacentes | `bomb_count: int` | Gestion du cas de la bombe sur les coordonnées du tir du joueur |
  
