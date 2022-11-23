@@ -127,7 +127,7 @@ def game_input():
     
     return target_position      
 
-# Display matrix in terminal
+# Display matrix in terminal (Debug version)
 def disp_matrix(matrix):
     # Print matrix and references
     for i in range(len(matrix) + 1):
@@ -145,6 +145,27 @@ def disp_matrix(matrix):
                 if j == 0:
                     print(f"{cc.red}{ii:02}{cc.end} |", end = "")
                 print(f" %s" % matrix[i,j], end= " |")    # f"{matrix[i,j]}"" don't work ?
+                # Cheat mode
+                # print(f" %s" % g.gm[i, j], end= " |")
+
+# Display the matrix for the player
+def display(matrix):
+    # Print matrix and references
+    for i in range(len(matrix) + 1):
+        ii = i + 1
+        print(f"\n")
+        
+        # Print letters down the matrix aligned with it
+        if ii == len(matrix) + 1:
+            print("     ", end = "")
+            for l in range(16):
+                print(f"{cc.red}{alpha[l]}{cc.end}", end = "   ")
+        else:
+            # Print the inside of the matrix        
+            for j in range(len(matrix[0])):
+                if j == 0:
+                    print(f"{cc.red}{ii:02}{cc.end} |", end = "")
+                print(f" %s" % matrix[i, j], end= " |")
                 # Cheat mode
                 # print(f" %s" % g.gm[i, j], end= " |")
                 
@@ -198,9 +219,10 @@ def menu():
         print(f"{cc.heart}Au revoir.")
         exit()
 def play():   
+    score = 0
     # Matrix initialisation & bomb randomization
-    matrix = np.zeros((16,16), dtype=np.int32)
-    ghost_matrix = matrix.copy()
+    matrix = np.full((16,16), " ")
+    ghost_matrix = np.zeros((16,16), dtype=np.int32)
     g = Game(matrix, ghost_matrix)
     
     # Bomb placement loop
@@ -210,8 +232,8 @@ def play():
         rand_i = rnd.randint(0, 15)
         rand_j = rnd.randint(0, 15)
         
-        # Matrix edition    
-        g.matrix[rand_i, rand_j] = 1    # I decided to use 0 & 1 instead of boolean
+        # Ghost Matrix edition    
+        g.gm[rand_i, rand_j] = 1    # I decided to use 0 & 1 instead of boolean
                                         # value because it's smaller to display
                                     
     loose = False
@@ -220,24 +242,26 @@ def play():
         os.system('cls||clear')
         
         # Display the matrix
-        disp_matrix(g.matrix)
+        display(g.matrix)
         
+        print(f"\n\n{cc.greenTag}Score: {cc.green}{score}{cc.end}")
         target = game_input()
         
-        bomb_count = check_around(target[0], target[1], g.matrix)
+        bomb_count = check_around(target[0], target[1], g.gm)
         
         if bomb_count == -1:
             loose = True
             break
         else:
             g.matrix[target[0], target[1]] = bomb_count
+            score += 1
         """if g.matrix[target[0], target[1]] == 1:
             loose = True
             break
         else:
             pass"""
         
-    print(f"\n{cc.redTag}{cc.red}Vous avez touché une bombe vous avez perdu !{cc.end}\n\n{cc.greenTag} 1 : Commencez une nouvelle partie.\n{cc.redTag} 0 : Retourner au menu principal\n\n")
+    print(f"\n{cc.redTag}{cc.red}Vous avez touché une bombe vous avez perdu !{cc.end}\n{cc.greenTag}Score : {cc.green}{score}{cc.end}\n\n{cc.greenTag} 1 : Commencez une nouvelle partie.\n{cc.redTag} 0 : Retourner au menu principal\n\n")
     restart = int_input(0, 1, f"{cc.ask}{cc.und}Choisissez une option ci-dessus pour continuer :{cc.end} ")
     if restart == 1:
         play()
