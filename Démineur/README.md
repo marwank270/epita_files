@@ -25,29 +25,24 @@ et comment celles-ci s'intègrent dans l’architecture globale de votre projet.
 - **Le jeu V2**, soit un fichier python (.py) implémentant les **fonctionnalités additionnelles**.
 
 ## **Rappel des consignes du démineur** :
-- Les règles du jeu sont affichées quand on lance le programme et il est possible
-d’afficher les règles du jeu grâce à une commande.
-- L'objectif du jeu est de découvrir toutes les cases sans bombe.
-- La grille est composée de 16x16 cases pouvant être avec ou sans bombe.
-- Avant le début du jeu, 40 bombes sont placées aléatoirement sur la grille.
-- L’utilisateur joue contre l’ordinateur.
-- Au début du jeu le contenu des cases lui est invisible et à chaque tour, la personne doit
-sélectionner une case à découvrir. La grille est réaffichée à chaque tour.
-- Pour désigner la case, il faut entrer un chiffre, une lettre ou une combinaison des deux.
-L’ordinateur ne doit pas accepter d’autres types de réponses (exemple, si les cases sont
-numérotées de 1 à 9, on ne peut pas entrer “A” ou “abcedef”).
-- Si la case choisie contient une bombe, le jeu est perdu.
-- Si la case ne contient pas de bombe, la case affiche le nombre de bombes dans
-l’entourage proche (c'est-à-dire les huit cases autours).
-- Si le joueur découvre toutes les cases sauf les 40 avec les bombes, il gagne.
-- Le jeu s’arrête lorsqu’il est gagné ou perdu et révèle alors l’ensemble des cases.
-- A la fin d’une partie, il est possible de rejouer sans avoir à relancer le programme.
-- Il est possible de quitter le programme grâce à une commande.
+- [x] Les règles du jeu sont affichées quand on lance le programme et il est possible d’afficher les règles du jeu grâce à une commande.
+- [x] L'objectif du jeu est de découvrir toutes les cases sans bombe.
+- [x] La grille est composée de 16x16 cases pouvant être avec ou sans bombe.
+- [x] Avant le début du jeu, 40 bombes sont placées aléatoirement sur la grille.
+- [ ] L’utilisateur joue contre l’ordinateur.
+- [x] Au début du jeu le contenu des cases lui est invisible et à chaque tour, la personne doit sélectionner une case à découvrir. La grille est réaffichée à chaque tour.
+- [x] Pour désigner la case, il faut entrer un chiffre, une lettre ou une combinaison des deux. L’ordinateur ne doit pas accepter d’autres types de réponses (exemple, si les cases sont numérotées de 1 à 9, on ne peut pas entrer “A” ou “abcedef”).
+- [x] Si la case choisie contient une bombe, le jeu est perdu.
+- [x] Si la case ne contient pas de bombe, la case affiche le nombre de bombes dans l’entourage proche (c'est-à-dire les huit cases autours).
+- [x] Si le joueur découvre toutes les cases sauf les 40 avec les bombes, il gagne.
+- [ ] Le jeu s’arrête lorsqu’il est gagné ou perdu et révèle alors l’ensemble des cases.
+- [x] A la fin d’une partie, il est possible de rejouer sans avoir à relancer le programme.
+- [x] Il est possible de quitter le programme grâce à une commande.
 
 ## Logs du projet :
 ### 16/10/22 :
 - Début du projet
-- Création du fichier principal v1 et de ce fichier README.md
+- Création du fichier principal v1 et de ce fichier `README.md`
 - Lien du dossier de projet avec [mon repository Github](https://github.com/marwank270/epita_files/tree/master/D%C3%A9mineur)
 - Création de la fonction `int_input()`
 ### 17/10/22 :
@@ -57,6 +52,10 @@ l’entourage proche (c'est-à-dire les huit cases autours).
 - Amélioration des fonctions précédentes
 ### 20/10/22 : 
 - Création de la classe `Game` afin d'avoir accès aux matrices dans tout le code
+- Création de la fonction `check_around()`
+- Amélioration des fonctions précédentes
+### 23/10/22 :
+- Création de fonction `display()` pour l'utilisateur
 
 ## Les fonctions de mon projet :
 
