@@ -277,8 +277,10 @@ def play():
             break
         else:
             pass"""
-        
-    print(f"\n{cc.redTag}{cc.red}Vous avez touché une bombe vous avez perdu !{cc.end}\n{cc.greenTag}Score : {cc.green}{score}{cc.end}\n\n{cc.greenTag} 1 : Commencez une nouvelle partie.\n{cc.redTag} 0 : Retourner au menu principal\n\n")
+    
+    os.system('cls||clear')
+    disp_matrix(g.gm) 
+    print(f"\n{cc.redTag}{cc.red}Vous avez touché une bombe en {cc.end}[{target[0]}, {target[1]}]{cc.red} vous avez perdu !{cc.end}\n{cc.greenTag}Score : {cc.green}{score}{cc.end}\n\n{cc.greenTag} 1 : Commencez une nouvelle partie.\n{cc.redTag} 0 : Retourner au menu principal\n\n")
     restart = int_input(0, 1, f"{cc.ask}{cc.und}Choisissez une option ci-dessus pour continuer :{cc.end} ")
     if restart == 1:
         play()
