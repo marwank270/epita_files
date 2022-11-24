@@ -29,13 +29,13 @@ et comment celles-ci s'intègrent dans l’architecture globale de votre projet.
 - [x] L'objectif du jeu est de découvrir toutes les cases sans bombe.
 - [x] La grille est composée de 16x16 cases pouvant être avec ou sans bombe.
 - [x] Avant le début du jeu, 40 bombes sont placées aléatoirement sur la grille.
-- [ ] L’utilisateur joue contre l’ordinateur.
+- [x] L’utilisateur joue contre l’ordinateur.
 - [x] Au début du jeu le contenu des cases lui est invisible et à chaque tour, la personne doit sélectionner une case à découvrir. La grille est réaffichée à chaque tour.
 - [x] Pour désigner la case, il faut entrer un chiffre, une lettre ou une combinaison des deux. L’ordinateur ne doit pas accepter d’autres types de réponses (exemple, si les cases sont numérotées de 1 à 9, on ne peut pas entrer “A” ou “abcedef”).
 - [x] Si la case choisie contient une bombe, le jeu est perdu.
 - [x] Si la case ne contient pas de bombe, la case affiche le nombre de bombes dans l’entourage proche (c'est-à-dire les huit cases autours).
 - [x] Si le joueur découvre toutes les cases sauf les 40 avec les bombes, il gagne.
-- [ ] Le jeu s’arrête lorsqu’il est gagné ou perdu et révèle alors l’ensemble des cases.
+- [x] Le jeu s’arrête lorsqu’il est gagné ou perdu et révèle alors l’ensemble des cases.
 - [x] A la fin d’une partie, il est possible de rejouer sans avoir à relancer le programme.
 - [x] Il est possible de quitter le programme grâce à une commande.
 
