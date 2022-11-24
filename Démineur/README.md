@@ -59,7 +59,12 @@ et comment celles-ci s'intègrent dans l’architecture globale de votre projet.
 ### 23/10/22 :
 - Création de fonction `display()` pour l'utilisateur
 - Ajout de la révélation des bombes en fin de partie
-
+### 24/10/22 : 
+- Création de la fonction `computer_play()`
+---
+## Sources:
+Mes sources pour m'aider dans ce projet sont principalement les documentations officielles de [Numpy](https://numpy.org/doc/stable/reference/index.html#reference) et de [python](https://docs.python.org/3.10/).
+Il m'est aussi arrivé d'utiliser [stackoverflow.com](https://stackoverflow.com/) pour comprendre mieux certains problèmes que j'ai rencontré.
 ---
 
 ## Les fonctions de mon projet :
@@ -74,4 +79,5 @@ et comment celles-ci s'intègrent dans l’architecture globale de votre projet.
 | Affichage et sélection des options | `menu` | `null` | Afficher le menu principal, les règles et les options pour l'utilisateur | `null` | Aucun cas spécifique à gérer |
 | Jeu | `play` | `null` | Jouer (actuellement en solo seulement) | `null` | Actuellement aucun |
 | Vérification des bombes alentours | `check_around` | `line: int, column: int, matrix: numpy.ndarray` | Vérifie le nombre de bombes dans les 8 cases adjacentes | `bomb_count: int` | Gestion du cas de la bombe sur les coordonnées du tir du joueur |
+| Jeu de l'ordinateur | `computer_play` | `matrix: numpy.ndarray` | Faire jouer l'ordinateur (placement aléatoire actuellement) | `list: [rand_i: int, rand_j: int]` | Aucun cas spécifique à gérer |
  
