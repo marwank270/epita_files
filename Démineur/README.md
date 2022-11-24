@@ -63,8 +63,9 @@ et comment celles-ci s'intègrent dans l’architecture globale de votre projet.
 - Création de la fonction `computer_play()`
 ---
 ## Sources:
-Mes sources pour m'aider dans ce projet sont principalement les documentations officielles de [Numpy](https://numpy.org/doc/stable/reference/index.html#reference) et de [python](https://docs.python.org/3.10/).
-Il m'est aussi arrivé d'utiliser [stackoverflow.com](https://stackoverflow.com/) pour comprendre mieux certains problèmes que j'ai rencontré.
+### Mes sources pour m'aider dans ce projet sont principalement les documentations officielles de [Numpy](https://numpy.org/doc/stable/reference/index.html#reference) et de [python](https://docs.python.org/3.10/).
+### Il m'est aussi arrivé d'utiliser [stackoverflow.com](https://stackoverflow.com/) pour comprendre mieux certains problèmes que j'ai rencontré.
+
 ---
 
 ## Les fonctions de mon projet :
