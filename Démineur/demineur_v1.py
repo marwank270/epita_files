@@ -2,6 +2,7 @@
 
 ### Dependencies:
 import os
+import time
 import numpy as np
 import random as rnd
 
@@ -116,7 +117,7 @@ def char_input(i_min: int, i_max: int, display: str):
             max_range = alpha[i_max]
             print(f"{cc.warn}Votre saisie ne correspond à aucune option disponible. Vous devez saisir un caractère compris entre {cc.red}[{min_range}, {max_range}]{cc.end}.")
 
-# Return list where user intend to play            
+# Return list with coordinates where  user intend to play            
 def game_input():
     line = -1
     column = -1
@@ -127,6 +128,7 @@ def game_input():
     if line <= -1:
         print(f"\n{cc.base}0 : Annuler et continuer la partie\n{cc.base}1 : Quitter la partie et revenir au menu principal\n")
         quit = int_input(0, 1, f"{cc.ask}Voulez vous quitter la partie ?")
+        # Confirmation
         if quit == 1:
             menu()
         else:
@@ -183,7 +185,6 @@ def display(matrix):
                 # print(f" %s" % g.gm[i, j], end= " |")
                 
 
-
 # Check the bomb count around            
 def check_around(line: int, column: int, matrix):
     bomb_count = 0
@@ -212,8 +213,20 @@ def check_around(line: int, column: int, matrix):
         line_cp += 1
         
     return bomb_count
-            
 
+# Computer logic (Random placement, but i would like to build a real logic for the v2)
+def computer_play(matrix):
+    line = -1
+    column = -1
+    
+    # Random coordinates
+    rand_i = rnd.randint(0, 15)
+    rand_j = rnd.randint(0, 15)
+    
+    return [rand_i, rand_j]
+    
+            
+# Menu function, display rules and allow user to play or quit
 def menu():
     # Clear the terminal from previous stuff
     os.system('cls||clear')
@@ -235,8 +248,10 @@ def menu():
     elif choice == 0:
         print(f"{cc.heart}Au revoir.")
         exit()
+
+# Game function, use the other ones to play        
 def play():   
-    score = 0
+    
     # Matrix initialisation & bomb randomization
     matrix = np.full((16,16), " ")
     ghost_matrix = np.zeros((16,16), dtype=np.int32)
@@ -252,9 +267,17 @@ def play():
         # Ghost Matrix edition    
         g.gm[rand_i, rand_j] = 1    # I decided to use 0 & 1 instead of boolean
                                         # value because it's smaller to display
-                                    
+    
+    # Loop variables                                
+    score = 0
     loose = False
-    while loose == False:
+    computer_loose = False
+    win = False
+    computer_win = False
+    last_played_user = []
+    last_played_computer = []
+    
+    while loose == False or win == False or computer_win == False or computer_loose == False:
         # Clear the terminal from previous stuff
         os.system('cls||clear')
         
@@ -262,25 +285,61 @@ def play():
         display(g.matrix)
         
         print(f"\n\n{cc.greenTag}Score: {cc.green}{score}{cc.end}")
+        
         target = game_input()
+        computer_target = computer_play(g.matrix)
         
-        bomb_count = check_around(target[0], target[1], g.gm)
+        bomb_count_user = check_around(target[0], target[1], g.gm)
+        bomb_count_computer = check_around(computer_target[0], computer_target[1], g.gm)
         
-        if bomb_count == -1:
+        if score >= 1:
+            #print(f"{cc.info}Vous avez joué en [{last_played_user[0]}, {last_played_user[1]}].\n{cc.info}L'ordinateur a joué en [{last_played_computer[0]}, {last_played_computer[1]}]")
+            time.sleep(2)
+        
+        if bomb_count_user == -1:
             loose = True
             break
+        elif bomb_count_computer == -1:
+            computer_loose = False
+            break
         else:
-            g.matrix[target[0], target[1]] = bomb_count
+            last_played_user = target
+            last_played_computer = computer_target
+            
+            # Writing bomb count in matrix
+            g.matrix[target[0], target[1]] = bomb_count_user
+            g.matrix[computer_target[0], computer_target[1]] = bomb_count_computer
+            
             score += 1
-        """if g.matrix[target[0], target[1]] == 1:
-            loose = True
+        
+        # Win conditions
+        if score == 216:
+            win == True
             break
-        else:
-            pass"""
     
+    # Clear board and reveal matrix
     os.system('cls||clear')
-    disp_matrix(g.gm) 
-    print(f"\n{cc.redTag}{cc.red}Vous avez touché une bombe en {cc.end}[{target[0]}, {target[1]}]{cc.red} vous avez perdu !{cc.end}\n{cc.greenTag}Score : {cc.green}{score}{cc.end}\n\n{cc.greenTag} 1 : Commencez une nouvelle partie.\n{cc.redTag} 0 : Retourner au menu principal\n\n")
+    disp_matrix(g.gm)
+    
+    # Display the end game message
+    target[0] += 1
+    target[1] = alpha[target[0]]
+    computer_target[0] += 1
+    computer_target[1] = alpha[computer_target[1]]
+    
+    
+    if loose == True:
+        print(f"\n{cc.redTag}{cc.red}Vous avez touché une bombe en {cc.end}[{target[0]}, {target[1]}]{cc.red} vous avez perdu, l'ordinateur gagne la partie !{cc.end}\n{cc.greenTag}Score : {cc.green}{score}{cc.end}\n\n")
+    elif win == True:
+        print(f"\n{cc.redTag}{cc.green}Vous avez gagné la partie !{cc.end}\n{cc.greenTag}Score : {cc.green}{score}{cc.end}\n\n")
+    elif computer_loose == True:
+        print(f"\n{cc.redTag}{cc.green}L'ordinateur a touché une bombe en {cc.end}[{computer_target[0]}, {computer_target[1]}]{cc.green} vous avez  gagné la partie !{cc.end}\n{cc.greenTag}Score : {cc.green}{score}{cc.end}\n\n")
+    elif computer_win == True:
+        print(f"\n{cc.redTag}{cc.red}L'ordinateur a gagné la partie !{cc.end}\n{cc.greenTag}Score : {cc.green}{score}{cc.end}\n\n")
+        
+    
+    # Restarting or quitting
+    print(f"\n{cc.greenTag} 1 : Commencez une nouvelle partie.\n{cc.redTag} 0 : Retourner au menu principal\n\n")
     restart = int_input(0, 1, f"{cc.ask}{cc.und}Choisissez une option ci-dessus pour continuer :{cc.end} ")
     if restart == 1:
         play()
@@ -289,6 +348,6 @@ def play():
     
     
 alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" 
-#print(alpha.rfind('p'.upper()))
-#print(alpha[])
+
+# Start Program
 menu()
