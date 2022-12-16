@@ -74,10 +74,7 @@ def int_input(val_min: int, val_max: int, display: str):
         
         # Try catch to avoid crash while converting input
         try:    
-            user_input = input(display)
-            if user_input == 'quit':
-                return -1
-            user_input = int(user_input)
+            user_input = int(input(display))
         except:
             isnum = False
             print(f"{cc.warn}Votre saisie n'est pas un nombre entier. Vous devez saisir un chiffre.")  
@@ -102,6 +99,10 @@ def char_input(i_min: int, i_max: int, display: str):
         # Try catch to avoid crash while converting input
         try:    
             user_input = str(input(display))
+            
+            # Handle quit command
+            if user_input == 'quit':
+                return [user_input, -1]
             uii = alpha.rfind(user_input.upper())
         except:
             ischar = False
@@ -123,22 +124,26 @@ def game_input():
     column = -1
     target_position = []
     
-    line = int_input(1, 16, f"\n{cc.base}{cc.und}Selectionnez une ligne {cc.green}[1, 16]{cc.end}{cc.und} (ou tapez \'quit\' pour retourner au menu) :{cc.end} ") - 1
+    line = int_input(1, 16, f"\n{cc.base}{cc.und}Selectionnez une ligne {cc.green}[1, 16]{cc.end}{cc.und} :{cc.end} ") - 1
     # If command quit is used
     if line <= -1:
+            target_position.append(line)
+    else:
+        target_position.append(line)
+    
+    column = char_input(0, 15, f"\n{cc.base}{cc.und}Selectionnez une colone {cc.green}[A, P]{cc.end} {cc.und}(ou tapez \'quit\' pour retourner au menu) :{cc.end} ")
+    # If command quit is used
+    if column[1] <= -1:
         print(f"\n{cc.base}0 : Annuler et continuer la partie\n{cc.base}1 : Quitter la partie et revenir au menu principal\n")
         quit = int_input(0, 1, f"{cc.ask}Voulez vous quitter la partie ?")
         # Confirmation
         if quit == 1:
             menu()
         else:
-            line = int_input(1, 16, f"\n{cc.base}{cc.und}Selectionnez une ligne {cc.green}[1, 16]{cc.end}{cc.und} :{cc.end} ") - 1
-            target_position.append(line)
+            column = char_input(0, 15, f"\n{cc.base}{cc.und}Selectionnez une colone {cc.green}[A, P]{cc.end}{cc.und} :{cc.end} ")
+            target_position.append(column[1])
     else:
-        target_position.append(line)
-    
-    column = char_input(0, 15, f"\n{cc.base}{cc.und}Selectionnez une colone {cc.green}[A, P]{cc.end}{cc.und} :{cc.end} ")
-    target_position.append(column[1])
+        target_position.append(column[1])
     
     return target_position      
 
@@ -239,7 +244,7 @@ def menu():
                                                
 """ 
     print(ascii_art)
-    print(f"{cc.info}{cc.und}Rappel des règles du jeu :{cc.end}\n\t- Le but du jeu est de découvrir toutes les cases sans toucher la moindre bombe !\n\t- Après chaque coup vous aurez le nombre de bombe dispatché dans les 8 cases tout autour de votre dernière sélection.\n\t- Pour déplacer le repère vous utiliserez les flèches directionnelles.\n")
+    print(f"{cc.info}{cc.und}Rappel des règles du jeu :{cc.end}\n\t- Le but du jeu est de découvrir toutes les cases sans toucher la moindre bombe !\n\t- Après chaque coup vous aurez le nombre de bombe dispatché dans les 8 cases tout autour de votre dernière sélection.\n\t- Pour sélectionner une position vous saisirez les coordonnées de la case souhaité.\n")
     print(f"{cc.greenTag}1 : Commencer une partie.\n{cc.redTag}0 : Quitter le jeu.\n\n")
     choice = int_input(0, 1, f"{cc.ask}{cc.und}Choisissez une option :{cc.end} ")
     
@@ -292,15 +297,15 @@ def play():
         bomb_count_user = check_around(target[0], target[1], g.gm)
         bomb_count_computer = check_around(computer_target[0], computer_target[1], g.gm)
         
-        if score >= 1:
+        #if score >= 1:
             #print(f"{cc.info}Vous avez joué en [{last_played_user[0]}, {last_played_user[1]}].\n{cc.info}L'ordinateur a joué en [{last_played_computer[0]}, {last_played_computer[1]}]")
-            time.sleep(2)
+            #time.sleep(2)
         
         if bomb_count_user == -1:
             loose = True
             break
         elif bomb_count_computer == -1:
-            computer_loose = False
+            computer_loose = True
             break
         else:
             last_played_user = target
