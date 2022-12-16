@@ -140,7 +140,6 @@ Capture des coordonnées alentour | `neighborhood` | `i: int, j: int` | Retourne
 | Initialisation de la fenêtre | `reinit` | `null` | Préparer la fenêtre tk et les variables globales du programme pour le bon déroulement du programme | Procédure: `null` | Aucuns cas spécifiques à gérer |
 | Afficher le contenu de la case sélectionnée | `trace` | `i: int, j: int` | Affiche et dessine les cases découvertes et le nombre de bombes | Procédure: `null` | Vérification de l'état de découverte et des flags et gestion des cas de Win et Loose |
 | Fonction de placement de drapeaux | `flag` | `i: int, j: int` |  Procédure de placement des drapeaux durant la partie | Procédure: `null` | Placement d'un drapeau sur une case contenant déjà un drapeau, vérification des conditions de Win et Loose | 
-| 
 
 # Ce que j'ai ajouté dans ma V2:
 Pour ma V2 je savais déjà dès le début que je voulais avoir une interface graphique, parce que pour moi l'interface graphique est une branche importante dans un jeu vidéo. J'ai donc décidé d'utiliser [`Tkinter`](https://tkdocs.com/) étant donnée que c'est une dépendences connu de la communautée python je savais que je n'aurais pas trop de mal à trouver de l'aide en cas de besoin. 
