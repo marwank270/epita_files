@@ -98,13 +98,16 @@ et comment celles-ci s'intègrent dans l’architecture globale de votre projet.
 - Amélioration des fonctions `spread()` et `neighborhood()` (maintenant toutes les deux fonctionnelles mais non optimisée)
 - Finalisation des fonctions `reinit()`, `spread()` et `trace()`
 - Correction partielle du bug `index out of range` qui empéchait de cliquer sur le bord Sud et Est
+- Ajout de nouveaux commentaire de code
 
 ### 10/12/22 : 
 - Correction du bug des drapeaux, (changement de la fonction appelé dans `rc()`)
 - Optimisation de la fonction `neighborhood()` et correction définitive du bug `index out of range` grace à un `try:` & `except:`
+- Ajout de nouveaux commentaire de code
 
 ### 14/12/22 : 
 - Implémentation de la classe `ToolTip()` trouvée sur [stackoverflow.com](https://stackoverflow.com/) lors de recherches sur un moyen d'afficher des textes au survol de la souris
+- Ajout de nouveaux commentaire de code
 ---
 ## Sources:
 ### Mes sources pour m'aider dans ce projet sont principalement les documentations officielles de [Numpy](https://numpy.org/doc/stable/reference/index.html#reference) et de [python](https://docs.python.org/3.10/).
