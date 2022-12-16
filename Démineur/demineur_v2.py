@@ -90,50 +90,6 @@ def neighborhood(i, j):
     
     neighbour = []
     
-    """# Handle corners, edges and special cases
-    if i == 0 and j == 0 :
-        neighbour.append(cells[i][j+1])
-        neighbour.append(cells[i+1][j])
-        neighbour.append(cells[i+1][j+1])
-    elif i == 0 and j > 0 and j < 19 :
-        neighbour.append(cells[i][j-1])
-        neighbour.append(cells[i][j+1])
-        neighbour.append(cells[i+1][j-1])
-        neighbour.append(cells[i+1][j])
-        neighbour.append(cells[i+1][j+1])
-    elif i == 0 and j == 19 :
-        neighbour.append(cells[i][j-1])
-        neighbour.append(cells[i+1][j-1])
-        neighbour.append(cells[i+1][j])
-    elif i == 14 and j == 0 :
-        neighbour.append(cells[i-1][j])
-        neighbour.append(cells[i-1][j+1])
-        neighbour.append(cells[i][j+1])
-    elif i == 14 and j > 0 and j < 19 :
-        neighbour.append(cells[i-1][j-1])
-        neighbour.append(cells[i-1][j])
-        neighbour.append(cells[i-1][j+1])
-        neighbour.append(cells[i][j-1])
-        neighbour.append(cells[i][j+1])
-    elif i == 14 and j == 19 :
-        neighbour.append(cells[i-1][j-1])
-        neighbour.append(cells[i-1][j])
-        neighbour.append(cells[i][j-1])
-    elif i > 0 and i < 14 and j == 0 :
-        neighbour.append(cells[i-1][j])
-        neighbour.append(cells[i-1][j+1])
-        neighbour.append(cells[i][j+1])
-        neighbour.append(cells[i+1][j])
-        neighbour.append(cells[i+1][j+1])
-    elif i > 0 and i < 14 and j == 19 :
-        neighbour.append(cells[i-1][j-1])
-        neighbour.append(cells[i-1][j])
-        neighbour.append(cells[i][j-1])
-        neighbour.append(cells[i+1][j-1])
-        neighbour.append(cells[i+1][j])
-        
-    # Regular cases
-    else :"""
     try:
         neighbour.append(cells[i-1][j-1])
         neighbour.append(cells[i-1][j])
