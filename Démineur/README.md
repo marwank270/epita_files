@@ -123,11 +123,11 @@ et comment celles-ci s'intègrent dans l’architecture globale de votre projet.
 |:---:|:---:|:---:|:---:|:---:|:---:|
 |Saisie utilisateur d'entier|  `int_input`   |   `val_min: int, val_max: int, display: str`  |   Renvoyer une saisie utilisateur seulement si elle est bien uniquement un chiffre  |  `user_input: int`   | Cas ou l'utilisateur entre des caractères grâce à un `try:` & `except:`    |
 | Saisie utilisateur caractères | `char_input` | `i_min: int, i_max: int, display: str` | Renvoyer une saisie utilisateur seulement si c'est un caractère alphabétique compris entre les indexes des lettres passé en paramètres | `list` : `[user_input: str, uii: int]` | Cas ou l'utilisateur saisis plus d'un caractère|
-| Saisie des coordonnées du placement | `game_input` | Procédure: `null` | Utiliser les deux fonctions précédentes pour renvoyer des coordonnées de la matrice | `list` : `[line: int, column: int]` | Gestion des cas spécifiques dans les fonctions `int_input()` et `char_input()` |
+| Saisie des coordonnées du placement | `game_input` | `null` | Utiliser les deux fonctions précédentes pour renvoyer des coordonnées de la matrice | `list` : `[line: int, column: int]` | Gestion des cas spécifiques dans les fonctions `int_input()` et `char_input()` |
 | Affichage de la matrice | `disp_matrix` | `matrix: numpy.ndarray` | Afficher dans le terminal le plateau de la partie actuelle (version debug) | Procédure: `null` | Gestion de l'affichage des nombre des lignes et des lettres des colones | 
 | Affichage de la matrice | `display` | `matrix: numpy.ndarray` | Afficher dans le terminal le plateau de la partie actuelle (version joueur) | Procédure: `null` | Gestion de l'affichage des nombre des lignes et des lettres des colones |
-| Affichage et sélection des options | `menu` | Procédure: `null` | Afficher le menu principal, les règles et les options pour l'utilisateur | Procédure: `null` | Aucun cas spécifique à gérer |
-| Jeu | `play` | Procédure: `null` | Jouer (actuellement en solo seulement) | Procédure: `null` | Actuellement aucun |
+| Affichage et sélection des options | `menu` |  `null` | Afficher le menu principal, les règles et les options pour l'utilisateur | Procédure: `null` | Aucun cas spécifique à gérer |
+| Jeu | `play` |  `null` | Jouer (actuellement en solo seulement) | Procédure: `null` | Actuellement aucun |
 | Vérification des bombes alentours | `check_around` | `line: int, column: int, matrix: numpy.ndarray` | Vérifie le nombre de bombes dans les 8 cases adjacentes | `bomb_count: int` | Gestion du cas de la bombe sur les coordonnées du tir du joueur |
 | Jeu de l'ordinateur | `computer_play` | `matrix: numpy.ndarray` | Faire jouer l'ordinateur (placement aléatoire actuellement) | `list: [rand_i: int, rand_j: int]` | Aucun cas spécifique à gérer |
  
